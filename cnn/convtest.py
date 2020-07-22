@@ -57,10 +57,11 @@ def imshow(inp, title=None):
 if __name__ == '__main__':
     for epoch in range(2):
         running_loss = 0.0
-        for i, data in enumerate(dataloaders['train'], 0):
-            inputs, labels = data
+        train_loader = dataloaders['train']
+        for inputs, labels in train_loader:
             outputs = de(inputs)
-            loss = calc_loss(outputs, inputs)
+            de.to(device)
+            running_loss = calc_loss(outputs, inputs)
 
 
 
